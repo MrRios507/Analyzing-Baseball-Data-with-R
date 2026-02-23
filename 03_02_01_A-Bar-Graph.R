@@ -20,4 +20,15 @@ hof_eras <- hof |>
   summarize(N = n())
 hof_eras
 
-ggplot(hof, aes(x = Era)) + geom_bar()
+ggplot(hof, aes(x = Era)) + 
+  geom_bar() +
+  xlab("Baseball Era") +
+  ylab("Frequency") +
+  ggtitle("Era of the Nonpitching Hall of Famers")
+
+ggplot(hof_eras, aes(Era, N)) +
+  geom_point(color = "red") +
+  xlab("Baseball Era") +
+  ylab("Frequency") +
+  ggtitle("Era of the Nonpitching Hall of Famers") +
+  coord_flip()
