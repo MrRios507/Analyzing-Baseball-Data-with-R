@@ -32,3 +32,20 @@ ggplot(hof_eras, aes(Era, N)) +
   ylab("Frequency") +
   ggtitle("Era of the Nonpitching Hall of Famers") +
   coord_flip()
+
+## Saving Graphs
+ggplot(hof, aes(Era)) +
+  geom_bar() +
+  labs(x = "Baseball Era",
+       y = "Frequency", 
+       title = "Era of the Nonpitching Hall of Famers")
+ggsave("bargraph.png")
+
+## Save a number of graphs in a single file.
+library(patchwork)
+
+p1 <- ggplot(hof, aes(Era)) + geom_bar()
+p2 <- ggplot(hof_eras, aes(Era, N)) + geom_point()
+
+p1 + p2
+ggsave("graphs.pdf")
