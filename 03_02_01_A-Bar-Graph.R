@@ -28,7 +28,7 @@ ggplot(hof, aes(x = Era)) +
 
 ggplot(hof_eras, aes(Era, N)) +
   geom_point(color = "red") +
-  xlab("Baseball Era") +
+  xlab("Baseball Era") + 
   ylab("Frequency") +
   ggtitle("Era of the Nonpitching Hall of Famers") +
   coord_flip()
@@ -49,3 +49,21 @@ p2 <- ggplot(hof_eras, aes(Era, N)) + geom_point()
 
 p1 + p2
 ggsave("graphs.pdf")
+
+# Numeric Variable: One-Dimensional Scatterplot
+ggplot(hof, aes(x = OPS, y = 1)) +
+  geom_jitter(height = 0.2) +
+  ylim(0, 2) +
+  theme(
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  ) +
+  coord_fixed(ratio = 0.03)
+
+# Numeric Variable: Histograms
+ggplot(hof, aes(x = OPS)) +
+  geom_histogram(
+    breaks = seq(0.4, 1.2, by = 0.1),
+    color = "white", fill = "orange"
+  )
